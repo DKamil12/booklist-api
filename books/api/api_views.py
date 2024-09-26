@@ -3,11 +3,12 @@ from books.models import Book, Author, Genre
 from .serializers import BookOnReadSerializer, BookOnWriteSerializer, GenreSerializer, AuthorSerializer
 from rest_framework import permissions
 from users.permissions import IsStaffOrReadOnly
+from books.filters import GenreFilter
 
 class BookAPIViewSet(ModelViewSet):
     queryset = Book.objects.all()
     permission_classes = [IsStaffOrReadOnly]
-    filterset_fields = ['genre']
+    filterset_class = GenreFilter
     search_fields = ['title', 'author__name']
     ordering_fields = ['avg_rating']
 

@@ -17,8 +17,7 @@ class List(models.Model):
         self.save()
 
     def unsubscribe(self):
-        if self.followers_count > 0:
-            self.followers_count -= 1
+        self.followers_count -= 1
         self.save()
 
     def __str__(self) -> str:
@@ -37,6 +36,11 @@ class ListItem(models.Model):
 class ListFollower(models.Model):
     user = models.ForeignKey(User, related_name='followed_lists', on_delete=models.CASCADE)
     list = models.ForeignKey(List, related_name='followers', on_delete=models.CASCADE)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'list'], name='unique_user_list_follow')
+        ]
 
     def save(self, *args, **kwargs) -> None:
         super().save(*args, **kwargs)

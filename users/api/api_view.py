@@ -21,12 +21,17 @@ class RegisterView(CreateAPIView):
 
         refresh = RefreshToken.for_user(user)
 
+        user = {
+            "id": user.id,
+            "username": user.username
+        }
+
         tokens = {
             "refresh": str(refresh),
             "access": str(refresh.access_token)
         }
 
-        return Response(tokens, status=HTTP_201_CREATED)
+        return Response({"user": user, "tokens": tokens}, status=HTTP_201_CREATED)
     
 
 class UserPersonalInfoAPIView(RetrieveUpdateDestroyAPIView):

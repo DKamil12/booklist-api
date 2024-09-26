@@ -13,7 +13,7 @@ class ListOnReadSerializer(serializers.ModelSerializer):
 class ListOnWriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = List
-        exclude = []
+        exclude = ['user']
 
 
 # Serializer for nested List FK in other models
