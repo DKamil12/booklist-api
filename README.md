@@ -17,7 +17,7 @@ Follow the steps below to set up and run the BookList API locally on your machin
   git clone https://github.com/DKamil12/booklist-api.git
   cd booklist-api
   ```
-3. Set up virtual environment:
+2. Set up virtual environment:
   ```
   # Create a virtual environment
   python -m venv env
@@ -33,11 +33,11 @@ Follow the steps below to set up and run the BookList API locally on your machin
   ```
   pip install -r requirements.txt
   ```
-5. Set up the database. Run the following commands to apply the database migrations and create the necessary tables:
+4. Set up the database. Run the following commands to apply the database migrations and create the necessary tables:
   ```
   python manage.py migrate
   ```
-6. Create a superuser to access the Django admin panel (optional):
+5. Create a superuser to access the Django admin panel (optional):
   ```
    python manage.py createsuperuser
   ```
@@ -75,11 +75,12 @@ Follow the steps below to set up and run the BookList API locally on your machin
     "refresh": "string"
   }
   ```
+  
 * Retrieve details of a single booklist
   Request URL:
   
   ```
-  /api/v1/lists/7/
+  GET /api/v1/lists/7/
   ```
   Response:
   
