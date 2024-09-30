@@ -51,29 +51,38 @@ Follow the steps below to set up and run the BookList API locally on your machin
    `http://127.0.0.1:8000/`
    
 **_Example:_**:
-* Sign Up User
+* Sign Up
   Request URL:
-  ``` POST /accounts/api/register/ ```
+  
+  ```
+  POST /accounts/api/register/
+  ```
   Example Body:
+  
   ``` 
   {
-    "username": "J349Y2OefECa-ttG3vqYz8.ARSCcr8_Je13mD.C5YcZ",
+    "username": "testuser",
     "password": "string",
     "confirm_password": "string"
   }
   ```
   Response:
+  
   ```
   {
-    "username": "mOL5uZLB",
+    "username": "testuser",
     "access": "string",
     "refresh": "string"
   }
   ```
 * Retrieve details of a single booklist
   Request URL:
-  ``` /api/v1/lists/7/ ```
+  
+  ```
+  /api/v1/lists/7/
+  ```
   Response:
+  
   ```
   {
     "id": 7,
