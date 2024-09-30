@@ -49,10 +49,10 @@ Follow the steps below to set up and run the BookList API locally on your machin
   ```
 2. Use Postman (or any API client) to interact with the API, which will be available at the following address:
    `http://127.0.0.1:8000/`
-**_Demo_**
-| HTTP Verb | Endpoint | Action |Response |
+**_Demo_**:
+| HTTP Verb | Endpoint | Action | Response |
 | --- | --- | --- | --- |
-| GET | api/v1/lists/7/ | ``` {
+| GET | api/v1/lists/7/ | Get details of the single booklist | ``` {
   "id": 7,
   "user": {
     "id": 7,
