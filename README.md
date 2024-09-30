@@ -52,6 +52,7 @@ Follow the steps below to set up and run the BookList API locally on your machin
    
 **_Example:_**:
 * Sign Up
+  
   Request URL:
   
   ```
@@ -77,6 +78,7 @@ Follow the steps below to set up and run the BookList API locally on your machin
   ```
   
 * Retrieve details of a single booklist
+  
   Request URL:
   
   ```
