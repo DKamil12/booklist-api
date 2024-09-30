@@ -4,7 +4,9 @@ from .serializers import BookOnReadSerializer, BookOnWriteSerializer, GenreSeria
 from rest_framework import permissions
 from users.permissions import IsStaffOrReadOnly
 from books.filters import GenreFilter
+from drf_spectacular.utils import extend_schema
 
+@extend_schema(tags=['Books'])
 class BookAPIViewSet(ModelViewSet):
     queryset = Book.objects.all()
     permission_classes = [IsStaffOrReadOnly]
@@ -19,6 +21,7 @@ class BookAPIViewSet(ModelViewSet):
             return BookOnWriteSerializer
 
 
+@extend_schema(tags=['Genres'])
 class GenreAPIViewSet(ModelViewSet):
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
@@ -29,6 +32,7 @@ class GenreAPIViewSet(ModelViewSet):
     ordering = ['name']
 
 
+@extend_schema(tags=['Authors'])
 class AuthorAPIViewSet(ModelViewSet):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer

@@ -3,7 +3,10 @@ from rest_framework import permissions
 from .serializers import ReviewOnReadSerializer, ReviewOnWriteSerializer
 from reviews.models import Review
 from users.permissions import IsOwnerOrReadOnly
+from drf_spectacular.utils import extend_schema
 
+
+@extend_schema(tags=['Reviews'])
 class ReviewAPIViewSet(ModelViewSet):
     queryset = Review.objects.all()
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]

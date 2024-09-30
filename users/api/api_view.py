@@ -7,7 +7,10 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.response import Response
 from rest_framework.status import HTTP_201_CREATED
 from users.permissions import IsUserItselfOrDeny
+from drf_spectacular.utils import extend_schema
 
+
+@extend_schema(tags=['Users'])
 class RegisterView(CreateAPIView):
     queryset = User.objects.all()
     permission_classes = [AllowAny]
@@ -34,13 +37,19 @@ class RegisterView(CreateAPIView):
         return Response({"user": user, "tokens": tokens}, status=HTTP_201_CREATED)
     
 
+@extend_schema(tags=['Users'])
 class UserPersonalInfoAPIView(RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated, IsUserItselfOrDeny]
 
 
+@extend_schema(tags=['Users'])
 class UserAPIView(ReadOnlyModelViewSet):
+    """
+    A simple viewset to display users
+    """
+    
     queryset = User.objects.all()
     serializer_class = UserSerializer
     search_fields = ['username', 'first_name', 'last_name']

@@ -7,8 +7,10 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from books.filters import GenreFilterForListItem
 from rest_framework.exceptions import ValidationError
 from django.db import IntegrityError 
+from drf_spectacular.utils import extend_schema
 
 
+@extend_schema(tags=['BookLists'])
 class ListAPIViewSet(ModelViewSet):
     queryset = List.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
@@ -26,6 +28,7 @@ class ListAPIViewSet(ModelViewSet):
         serializer.save(user=self.request.user)
 
 
+@extend_schema(tags=['BookList Items'])
 class ListItemsAPIViewSet(ModelViewSet):
     queryset = ListItem.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly, HasListOrReadOnly]
@@ -48,6 +51,7 @@ class ListItemsAPIViewSet(ModelViewSet):
         return super().create(request, *args, **kwargs)
 
 
+@extend_schema(tags=['BookList Followers'])
 class ListFollowerAPIViewSet(ModelViewSet):
     queryset = ListFollower.objects.all()
     permission_classes = [IsOwnerOrReadOnly]
