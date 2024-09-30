@@ -49,31 +49,44 @@ Follow the steps below to set up and run the BookList API locally on your machin
   ```
 2. Use Postman (or any API client) to interact with the API, which will be available at the following address:
    `http://127.0.0.1:8000/`
-**_Demo_**:
-| HTTP Verb | Endpoint | Action | Response |
-| --- | --- | --- | --- |
-| GET | api/v1/lists/7/ | Get details of the single booklist | ``` {
-  "id": 7,
-  "user": {
+   
+**_Example:_**:
+* Sign Up User
+  Request URL:
+  ``` POST /accounts/api/register/ ```
+  Example Body:
+  ``` 
+  {
+    "username": "J349Y2OefECa-ttG3vqYz8.ARSCcr8_Je13mD.C5YcZ",
+    "password": "string",
+    "confirm_password": "string"
+  }
+  ```
+  Response:
+  ```
+  {
+    "username": "mOL5uZLB",
+    "access": "string",
+    "refresh": "string"
+  }
+  ```
+* Retrieve details of a single booklist
+  Request URL:
+  ``` /api/v1/lists/7/ ```
+  Response:
+  ```
+  {
     "id": 7,
-    "username": "emmawatson"
-  },
-  "name": "Top 20 Books That Everyone Should Read At Least Once",
-  "description": "Recommended by Emma Watson",
-  "created_at": "2024-09-04",
-  "followers_count": 2
-} ``` |
-
-### Main API Endpoints
-| HTTP Verbs | Endpoints | Action |
-| --- | --- | --- |
-| POST | accounts/api/register/ | To register new user account, returns JWT token for further access |
-| POST | accounts/api/login/ | To login an existing user account, returns JWT token for further access |
-| GET | api/v1/lists/ | To get all booklists |
-| POST | api/v1/lists/ | To create new booklist |
-| GET | api/v1/lists/<int:listId>/ | To get details of the single booklist |
-| GET | api/v1/reviews/ | To get all reviews |
-| POST |api/v1/reviews/ | To create new review |
+    "user": {
+      "id": 7,
+      "username": "emmawatson"
+    },
+    "name": "Top 20 books everyone should read at least once in a life",
+    "description": "Recommended by Emma Watson",
+    "created_at": "2024-09-04T16:02:14.845967+05:00",
+    "followers_count": 2
+  }
+  ```
 
 ### API Documentation
 For detailed API documentation and to explore all available endpoints, please visit the Swagger UI Documentation once the server is running:
